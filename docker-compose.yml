@@ -11,7 +11,11 @@ services:
     restart: unless-stopped
 
   playit:
-    image: ghcr.io/playit-cloud/playit-agent:latest
+    image: mafen/playit-docker
     container_name: playit-agent
-    network_mode: host
     restart: unless-stopped
+    volumes:
+      - ./playit-data:/playit
+    stdin_open: true
+    tty: true
+
