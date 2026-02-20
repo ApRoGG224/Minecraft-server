@@ -11,11 +11,8 @@ services:
     restart: unless-stopped
 
   playit:
-    image: mafen/playit-docker
+    image: ghcr.io/playit-cloud/playit-agent:latest
     container_name: playit-agent
     restart: unless-stopped
-    volumes:
-      - ./playit-data:/playit
-    stdin_open: true
-    tty: true
-
+    environment:
+      - SECRET_KEY=${PLAYIT_SECRET_KEY}
