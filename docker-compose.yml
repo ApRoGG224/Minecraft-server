@@ -1,0 +1,17 @@
+services:
+  mc-server:
+    build: .
+    container_name: mc-neoforge-server
+    ports:
+      - "25565:25565"
+    volumes:
+      - .:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  playit:
+    image: ghcr.io/playit-cloud/playit-agent:latest
+    container_name: playit-agent
+    network_mode: host
+    restart: unless-stopped
